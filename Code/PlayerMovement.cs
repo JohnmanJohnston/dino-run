@@ -13,10 +13,7 @@ public class PlayerMovement : MonoBehaviour
         isGrounded = false;
     }
 
-    private void Jump() {
-        PhysicsBody.AddForce(new Vector2(0f, JumpForce * Time.fixedDeltaTime), ForceMode2D.Impulse);
-    }
-
+    private void Jump() => PhysicsBody.AddForce(new Vector2(0f, JumpForce * Time.fixedDeltaTime), ForceMode2D.Impulse);
     private void HandleGroundCheck() => isGrounded = Physics2D.OverlapCircle(transform.position, (GroundCheckRadius + (transform.position.y / 2f)) + .1f, LayerMask.GetMask("Ground"));
 
     private void Update() {
