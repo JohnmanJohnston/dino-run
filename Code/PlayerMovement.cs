@@ -8,11 +8,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float GroundCheckRadius;
     private Rigidbody2D PhysicsBody;
 
-    private void Start() {
-        PhysicsBody = GetComponent<Rigidbody2D>();
-        isGrounded = false;
-    }
-
+    private void Start() => PhysicsBody = GetComponent<Rigidbody2D>();
     private void Jump() => PhysicsBody.AddForce(new Vector2(0f, JumpForce * Time.fixedDeltaTime), ForceMode2D.Impulse);
     private void HandleGroundCheck() => isGrounded = Physics2D.OverlapCircle(transform.position, (GroundCheckRadius + (transform.position.y / 2f)) + .1f, LayerMask.GetMask("Ground"));
 
